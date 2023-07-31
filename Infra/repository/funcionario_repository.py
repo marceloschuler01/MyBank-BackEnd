@@ -1,6 +1,6 @@
 from Infra.config.connection import DBConnectionHandler
-from Infra.entity.funcionario import Funcionario
-from Infra.entity.agencia import Agencia
+from core.entity.funcionario import Funcionario
+from core.entity.agencia import Agencia
 import logging
 
 class FuncionarioRepository:

@@ -1,4 +1,4 @@
-from ..config.base import Base
+from Infra.config.base import Base
 from sqlalchemy import Column, String, Integer, Date, ForeignKey
 
 class Funcionario(Base):
