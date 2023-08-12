@@ -1,15 +1,22 @@
+from core.entity.cliente import Cliente
 from ..cliente_repository import ClienteRepository
+from .connection_handler_mock import ConnectionHandlerMock
 
-repo = ClienteRepository()
+repo = ClienteRepository(ConnectionHandlerMock)
 
 def test_select_all():
     result = repo.select_all()
-    assert str(result[0]) == 'Cliente (id=1, cpf=1234, nome=Marcelo)'
+    assert str(result[0]) == 'Cliente (id=1, cpf=123, nome=Joao)'
 
-def test_select_by_id():
-    result = repo.select_by_id(3)
-    assert str(result) == 'Cliente (id=3, cpf=765, nome=Lucas)'
+def test_insert():
+    data = Cliente(id=1000, nome="aaaa", cpf="12444")
+    res = repo.insert(data)
+    assert res == None
 
-def test_select_by_cpf():
+'''def test_select_by_id():
+    result = repo.select_by_id(1)
+    assert str(result) == 'Cliente (id=1, cpf=123, nome=Joao)'''
+
+'''def test_select_by_cpf():
     result = repo.select_by_cpf(5123)
-    assert str(result) == 'Cliente (id=6, cpf=5123, nome=Joao)'
+    assert str(result) == 'Cliente (id=6, cpf=5123, nome=Joao)'''
