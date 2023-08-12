@@ -2,6 +2,7 @@ from flask import Flask, request
 from flask_cors import CORS
 from Infra.controller.client_controller import ClientController
 from Infra.adapters.flask_adapter import FlaskRequestAdapter
+import logging
 
 app = Flask(__name__)
 cors = CORS(app)
@@ -21,4 +22,10 @@ def teste():
     return str(request.headers)
 
 if __name__=='__main__':
+    logging.basicConfig(
+        level=logging.INFO,
+        format='%(asctime)s %(name)s %(levelname)s %(message)s',
+        filename='./Infra/log/program.log'
+    )
+
     app.run()

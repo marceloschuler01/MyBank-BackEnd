@@ -13,13 +13,13 @@ class ConvertClientsToDTO:
     
     def __convertEachClient(self):
         for cliente in self.__clientes:
-            self.__convert_client(cliente)
+            clienteDTO = self.__convert_client(cliente)
+            self.__add_DTO_to_list(clienteDTO)
 
-    def __convert_client(self, cliente):
+    def __convert_client(self, cliente) -> ClienteDTO:
         cpf = cliente.cpf
         nome = cliente.nome
-        clienteDTO = ClienteDTO(cpf, nome)
-        self.__add_DTO_to_list(clienteDTO)
+        return ClienteDTO(cpf, nome)
 
     def __add_DTO_to_list(self, clienteDTO):
         self.__clientesDTO.append(clienteDTO)
