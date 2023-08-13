@@ -1,5 +1,4 @@
-from ..agencia_repository import AgenciaRepository
-from core.entity.agencia import Agencia
+from .agencia_repository import AgenciaRepository
 from .connection_handler_mock import ConnectionHandlerMock
 
 repo = AgenciaRepository(ConnectionHandlerMock)

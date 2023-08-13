@@ -1,5 +1,5 @@
-from core.entity.cliente import Cliente
-from ..cliente_repository import ClienteRepository
+from .cliente_repository import ClienteRepository
+from .cliente_repository import Cliente
 from .connection_handler_mock import ConnectionHandlerMock
 
 repo = ClienteRepository(ConnectionHandlerMock)
