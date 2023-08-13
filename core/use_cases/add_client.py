@@ -2,6 +2,7 @@ import logging
 from ..repository.cliente_repository_interface import ClienteRepositoryInterface as ClienteRepository
 from ..exceptions.invalid_cpf_exception import InvalidCpfException
 from ..exceptions.invalid_name_exception import InvalidNameException
+from ..use_cases.cpf_validator import CpfValidator
 
 class AddClient:
     def __init__(self, client_info: dict, repository: ClienteRepository):
@@ -9,6 +10,7 @@ class AddClient:
         self.__client_info = client_info
         self.__nome = None
         self.__cpf = None
+        self.log = logging.getLogger(__name__)
 
         self.__add_client()
 
@@ -28,19 +30,20 @@ class AddClient:
         self.__get_cpf()        
 
     def __get_name(self):
-        nome = self.__client_info['nome']
-        self.__valida_nome(nome)
-        self.__nome = nome
+        self.__nome = self.__client_info['nome']
+        self.__valida_nome()
 
     def __get_cpf(self):
-        cpf = self.__client_info['cpf']
-        self.__valida_cpf(cpf)
-        self.__cpf = cpf
+        self.__cpf = self.__client_info['cpf']
+        self.__valida_cpf()
 
-    def __valida_nome(self, nome: str) -> bool:
-        if not isinstance(nome, str):
+    def __valida_nome(self) -> bool:
+        if not isinstance(self.__nome, str):
             raise InvalidNameException
 
-    def __valida_cpf(self, cpf: str) -> bool:
-        if not isinstance(cpf, str):
-            raise InvalidCpfException
+    def __valida_cpf(self) -> bool:
+        try:
+            CpfValidator(self.__cpf)
+        except InvalidCpfException as e:
+            self.log.warn(e.msg)
+            raise InvalidCpfException("Cpf Inválido")

@@ -1,6 +1,9 @@
-from Infra.config.connection import DBConnectionHandler
-from core.entity.agencia import Agencia
+import sys
+
+sys.path.append('C:\\Users\\Marcelo\\Desktop\\ufsc\\Estudos\\Projeto Banco\\BackEndMyBank')
+
 import logging
+from core.entity.agencia import Agencia
 
 class AgenciaRepository:
     def __init__(self, DBConnectionHandler):
@@ -16,4 +19,3 @@ class AgenciaRepository:
         with self.__DBConnectionHandle() as db:
             data = db.session.get(Agencia, id)
             return data
-        
