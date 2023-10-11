@@ -1,5 +1,4 @@
 from .cliente_repository import ClienteRepository
-from .cliente_repository import Cliente
 from .connection_handler_mock import ConnectionHandlerMock
 
 repo = ClienteRepository(ConnectionHandlerMock)
@@ -9,8 +8,8 @@ def test_select_all():
     assert str(result[0]) == 'Cliente (id=1, cpf=123, nome=Joao)'
 
 def test_insert():
-    data = Cliente(id=1000, nome="aaaa", cpf="12444")
-    res = repo.insert(data)
+
+    res = repo.insert(nome="aaaa", cpf="12444")
     assert res == None
 
 '''def test_select_by_id():

@@ -1,16 +1,17 @@
 from ..exceptions.invalid_cpf_exception import InvalidCpfException
 
 class CpfValidator:
-    def __init__(self, cpf: str) -> bool:
+    def __init__(self, cpf: str):
         self.__cpf = cpf
+        self.valido = None
 
         self.__validate()
-        self.__valido = None
+
 
     def __validate(self):
         self.__valide_type()
         self.__validate_length()
-        self.__valido = True
+        self.valido = True
 
     def __valide_type(self):
         if not isinstance(self.__cpf, str):

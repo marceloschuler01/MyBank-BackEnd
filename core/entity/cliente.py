@@ -8,6 +8,8 @@ class Cliente(Base):
     cpf = Column(String, nullable=False, unique=True)
     nome = Column(String, nullable=False)
     data_nascimento = Column(Date)
+    email = Column(String)
+    senha = Column(String)
 
     def __repr__(self):
         return f"Cliente (id={self.id}, cpf={self.cpf}, nome={self.nome})"

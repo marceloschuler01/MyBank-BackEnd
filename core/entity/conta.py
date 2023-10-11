@@ -1,5 +1,5 @@
 from Infra.config.base import Base
-from sqlalchemy import Column, Integer, FLOAT, ForeignKey
+from sqlalchemy import Column, Integer, FLOAT, ForeignKey, String
 
 class Conta(Base):
     __tablename__ = "conta"
@@ -11,4 +11,4 @@ class Conta(Base):
     id_agencia = Column(Integer, ForeignKey("agencia.id"))
 
     def __repr__(self):
-        return f"Conta (id={self.id}, cliente={self.id_cliente}, tipo={self.tipo}, saldo={self.saldo})"
+        return f"Conta (id={self.id}, cliente={self.id_cliente}, tipo={self.tipo}, saldo={self.saldo}, email={self.email})"
