@@ -27,6 +27,10 @@ class ClientController:
             self.http_context.make_response(body="Unsupported Media Type", status=415)
         finally:
             return self.http_context.response
+    
+    def get_by_cpf(self, cpf: str):
+        self.http_context.make_response(body="TOpp", status=200)
+        return self.http_context.response
 
     def __try_add(self):
         client_info = self.http_context.get_request()['body']

@@ -8,4 +8,4 @@ import pytest
     ]                     
 )
 def test_cpf_valido(cpf, result):
-    assert CpfValidator(cpf) == result
+    assert CpfValidator(cpf).valido == result
