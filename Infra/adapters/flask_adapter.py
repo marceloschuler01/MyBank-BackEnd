@@ -10,6 +10,6 @@ class FlaskRequestAdapter(HttpContext):
     def get_request(self):
         return {"header": self.__request.headers, "body": self.__request.json, "content_type": self.__request.content_type}
     
-    def make_response(self, status=200, body={}):
+    def make_response(self, status:int=200, body:dict={}):
         self.response = make_response(json.dumps(body, default=vars), status)
         return self.response

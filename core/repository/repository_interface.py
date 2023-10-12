@@ -1,6 +1,6 @@
 import abc
 
-class ClienteRepositoryInterface(metaclass=abc.ABCMeta):
+class RepositoryInterface(metaclass=abc.ABCMeta):
     @abc.abstractmethod
     def select_all(self):
         pass
@@ -10,13 +10,12 @@ class ClienteRepositoryInterface(metaclass=abc.ABCMeta):
         pass
 
     @abc.abstractmethod
-    def select_by_cpf(self, cpf: str):
+    def select(self, filter: dict, conn):
         pass
 
     @abc.abstractmethod
     def insert(self, cpf: str, nome: str):
         pass
-
 
 
         

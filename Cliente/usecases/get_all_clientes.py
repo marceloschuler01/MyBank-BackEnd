@@ -1,8 +1,8 @@
-from ..repository.cliente_repository_interface import ClienteRepositoryInterface
-from .convert_clients_to_DTO import ConvertClientsToDTO
+from core.repository.repository_interface import RepositoryInterface as Repository
+from Cliente.utilities.convert_clients_to_DTO import ConvertClientsToDTO
 
 class GetAllClientes:
-    def __init__(self, cliente_repository: ClienteRepositoryInterface) -> None:
+    def __init__(self, cliente_repository: Repository) -> None:
         self.__repository = cliente_repository
 
     def get(self):

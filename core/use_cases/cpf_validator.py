@@ -1,4 +1,4 @@
-from ..exceptions.invalid_cpf_exception import InvalidCpfException
+from Cliente.exceptions.invalid_cpf_exception import InvalidCpfException
 
 class CpfValidator:
     def __init__(self, cpf: str):

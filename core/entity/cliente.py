@@ -4,7 +4,7 @@ from sqlalchemy import Column, String, Date, Integer
 class Cliente(Base):
     __tablename__ = "cliente"
 
-    id = Column(Integer, primary_key=True, autoincrement=True)
+    id_cliente = Column(Integer, primary_key=True, autoincrement=True)
     cpf = Column(String, nullable=False, unique=True)
     nome = Column(String, nullable=False)
     data_nascimento = Column(Date)

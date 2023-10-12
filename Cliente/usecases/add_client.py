@@ -1,11 +1,11 @@
 import logging
-from ..repository.cliente_repository_interface import ClienteRepositoryInterface as ClienteRepository
-from ..exceptions.invalid_cpf_exception import InvalidCpfException
-from ..exceptions.invalid_name_exception import InvalidNameException
-from ..use_cases.cpf_validator import CpfValidator
+from core.repository.repository_interface import RepositoryInterface as Repository
+from Cliente.exceptions.invalid_cpf_exception import InvalidCpfException
+from core.exceptions.invalid_name_exception import InvalidNameException
+from core.use_cases.cpf_validator import CpfValidator
 
 class AddClient:
-    def __init__(self, client_info: dict, repository: ClienteRepository):
+    def __init__(self, client_info: dict, repository: Repository):
         self.__repository = repository
         self.__client_info = client_info
         self.__nome = None

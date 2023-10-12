@@ -1,5 +1,5 @@
-from ..DTO.cliente_DTO import ClienteDTO
-from ..entity.cliente import Cliente
+from Cliente.dto.cliente_DTO import ClienteDTO
+from core.entity.cliente import Cliente
 
 class ConvertClientsToDTO:
     def __init__(self):

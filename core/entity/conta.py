@@ -7,7 +7,7 @@ class Conta(Base):
     id = Column(Integer, primary_key=True, autoincrement=True)
     tipo = Column(Integer)
     saldo = Column(FLOAT, default=0.0)
-    id_cliente = Column(Integer, ForeignKey("cliente.id"))
+    id_cliente = Column(Integer, ForeignKey("cliente.id_cliente"))
     id_agencia = Column(Integer, ForeignKey("agencia.id"))
 
     def __repr__(self):

@@ -6,7 +6,7 @@ import sys
 
 sys.path.append('C:\\Users\\Marcelo\\Desktop\\ufsc\\Estudos\\Projeto Banco\\BackEndMyBank')
 
-from Infra.controller.client_controller import ClientController
+from Cliente.controller.client_controller import ClientController
 from Infra.adapters.flask_adapter import FlaskRequestAdapter
 
 app = Flask(__name__)
@@ -44,5 +44,5 @@ if __name__=='__main__':
         format='%(asctime)s %(name)s %(levelname)s %(message)s',
         filename='./log/program.log'
     )
-
+    logging.getLogger().addHandler(logging.StreamHandler())
     app.run()

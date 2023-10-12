@@ -6,5 +6,5 @@ class HttpContext(metaclass=abc.ABCMeta):
         pass
 
     @abc.abstractmethod
-    def make_response(self):
+    def make_response(self, status:int, body:dict):
         pass
