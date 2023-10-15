@@ -1,6 +1,7 @@
 import logging
 from core.repository.repository_interface import RepositoryInterface
 from Infra.utilities.with_db_connection import with_db_connection
+from Infra.utilities.verify_if_it_was_found_data import verify_if_it_was_found_data
 
 class Repository(RepositoryInterface):
     def __init__(self, model, log):
@@ -8,16 +9,19 @@ class Repository(RepositoryInterface):
         self.log = log
 
     @with_db_connection
+    @verify_if_it_was_found_data
     def select_all(self, conn=None) -> list:
         data = conn.session.query(self.__model).all()
         return data
 
-    @with_db_connection     
+    @with_db_connection
+    @verify_if_it_was_found_data   
     def select(self, filter: dict={}, conn=None):
         data = conn.session.query(self.__model).filter_by(**filter).first()
         return data
 
     @with_db_connection
+    @verify_if_it_was_found_data
     def select_by_id(self, id: int, conn=None):
         data = conn.session.get(self.__model, id)
         return data

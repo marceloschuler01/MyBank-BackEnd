@@ -1,11 +1,17 @@
 from flask_restful import Resource
-from flask import session, request
-from controller.client_controller import ClientController
-from Infra.adapters.flask_adapter import FlaskRequestAdapter
+from flask import session
+from Cliente.usecases.get_client_by_id import GetClientById
+from Infra.utilities.request_adapter_decorator import request_adapter
 from Infra.utilities.client_login_required import client_login_required
+from Infra.utilities.error_handler import error_handler 
 
 class ClienteResource(Resource):
 
     @client_login_required
-    def get(self):
-        return ClientController(FlaskRequestAdapter(request)).get_by_id(session['id'])
+    @error_handler
+    def get(self, request=None):
+        cliente = GetClientById().get(id=session['id'])
+        return {
+            'status': 200,
+            'body': cliente,
+            }

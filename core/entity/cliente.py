@@ -12,6 +12,6 @@ class Cliente(Base):
     senha = Column(String)
 
     def __repr__(self):
-        return f"Cliente (id={self.id}, cpf={self.cpf}, nome={self.nome})"
+        return f"id={self.id_cliente}, cpf={self.cpf}, nome={self.nome}"
 
 

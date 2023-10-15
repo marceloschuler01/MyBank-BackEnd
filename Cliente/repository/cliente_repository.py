@@ -9,13 +9,11 @@ class ClienteRepository(Repository):
         super().__init__(Cliente, self.log)
 
     @with_db_connection
-    def insert(self, cpf: str, nome: str, conn=None) -> None:
+    def insert(self, cliente: Cliente, conn=None) -> None:
 
-        cliente = Cliente(cpf=cpf, nome=nome)
-        self.__add_client_with_connection(cliente, conn=conn)
-
-    
-    def __add_client_with_connection(self, cliente: Cliente, conn):
         conn.session.add(cliente)
-        conn.session.commit()
+        conn.session.flush()
+        conn.session.expunge_all()
         self.log.info('Cliente adicionado com sucesso')
+        self.log.info(cliente)
+        return cliente

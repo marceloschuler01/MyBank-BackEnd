@@ -14,7 +14,7 @@ class RepositoryInterface(metaclass=abc.ABCMeta):
         pass
 
     @abc.abstractmethod
-    def insert(self, cpf: str, nome: str):
+    def insert(self, cliente):
         pass
 
 

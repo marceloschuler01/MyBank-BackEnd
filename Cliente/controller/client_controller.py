@@ -1,22 +1,16 @@
-from Infra.config.connection import DBConnectionHandler
 from Infra.adapters.http_context import HttpContext
 from Cliente.repository.cliente_repository import ClienteRepository
 from Cliente.usecases.get_all_clientes import GetAllClientes
 from Cliente.usecases.add_client import AddClient
 from Cliente.usecases.get_client_by_id import GetClientById
 from core.exceptions.invalid_date_exception import InvalidDate
+from Infra.utilities.make_response import make_response
 import logging
 
 class ClientController:
     def __init__(self, http_context: HttpContext):
         self.clienteRepository = ClienteRepository()
-        self.http_context = http_context
         self.log = logging.getLogger(__name__)
-
-    def get_all(self):
-        clientes = GetAllClientes(self.clienteRepository).get()
-        self.http_context.make_response(body=clientes)
-        return self.http_context.response
 
     def add(self):
         try:
@@ -29,13 +23,13 @@ class ClientController:
         finally:
             return self.http_context.response
     
-    def get_by_cpf(self, cpf: str):
-        self.http_context.make_response(body="TOpp", status=200)
-        return self.http_context.response
-    
-    def get_by_id(self, id):
+    @make_response
+    def get(self, id):
         cliente = GetClientById(self.clienteRepository).get(id=id)
-        return self.http_context.make_response(status=200, body=cliente)
+        return {
+            'status': 200,
+            'body': cliente,
+            }
 
     def __try_add(self):
         client_info = self.http_context.get_request()['body']

@@ -18,5 +18,14 @@ app.secret_key = '523a4792a759d43a53e2021ae86a0ccbb182bd9efde9fb2d22893252b03132
 from resource.clientResource import ClienteResource
 api.add_resource(ClienteResource, '/')
 
+from Cliente.resource.register_resource import RegisterResource
+api.add_resource(RegisterResource, '/register')
+
 if __name__ == '__main__':
+    logging.basicConfig(
+        level=logging.INFO,
+        format='%(asctime)s %(name)s %(levelname)s %(message)s',
+        filename='../log/program.log'
+    )
+    logging.getLogger().addHandler(logging.StreamHandler())
     app.run(debug=True)

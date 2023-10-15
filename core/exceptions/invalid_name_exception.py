@@ -1,6 +1,6 @@
-from ..exceptions.invalid_date_exception import InvalidDate
+from core.exceptions.invalid_data_exception import InvalidData
 
-class InvalidNameException(InvalidDate):
+class InvalidNameException(InvalidData):
     def __init__(self, msg="Nome Inválido"):
         super(InvalidNameException, self).__init__(msg)
 

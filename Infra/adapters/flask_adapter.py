@@ -13,3 +13,8 @@ class FlaskRequestAdapter(HttpContext):
     def make_response(self, status:int=200, body:dict={}):
         self.response = make_response(json.dumps(body, default=vars), status)
         return self.response
+    
+class FlaskMakeResponseAdapter:
+    def make_response(self, status:int = 400, body:dict={}):
+        return make_response(json.dumps(body, default=vars), status)
+
