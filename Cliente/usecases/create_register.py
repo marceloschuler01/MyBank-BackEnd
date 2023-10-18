@@ -1,8 +1,6 @@
 import logging
 from core.repository.repository_interface import RepositoryInterface as Repository
 from Cliente.repository.cliente_repository import ClienteRepository
-from Cliente.exceptions.invalid_cpf_exception import InvalidCpfException
-from core.exceptions.invalid_name_exception import InvalidNameException
 from core.exceptions.invalid_data_exception import InvalidData
 from core.use_cases.cpf_validator import CpfValidator
 from core.entity.cliente import Cliente
@@ -21,13 +19,13 @@ class CreateRegister:
         try:
             self._client = Cliente(**client_info)
             result = self._try_add_client()
-            return {'status':200, 'body':str(result)}, result.id_cliente
+            return {'status':200, 'body':str(result), 'value':result.id_cliente}
         except InvalidData as e:
-            logging.warn(str(e))
-            return {'status': 400, 'body':e.msg}, None
+            self.log.warn(str(e))
+            return {'status': 400, 'body':e.msg, 'value': None}
         except IntegrityError as e:
-            logging.warn(str)
-            return {'status': 400, 'body':str(e)}, None
+            self.log.warn(str(e))
+            return {'status': 400, 'body':str(e), 'value': None}
 
     def _try_add_client(self):
         self._validate_data()

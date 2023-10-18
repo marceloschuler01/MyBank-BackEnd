@@ -25,9 +25,9 @@ class RegisterResource(Resource):
     def post(self):
         parse = parser_post.parse_args()
         data = parse['data']
-        result, id = CreateRegister().add(data)
-        if id:
-            session['id'] = id
-        logging.error(result)
-        logging.error("\n" * 20)
+
+        result = CreateRegister().add(data)
+        if result['status'] == 200:
+            session['id'] = result['value']
+
         return result

@@ -4,3 +4,4 @@ from dataclasses import dataclass
 class ClienteDTO:
     cpf: str
     nome: str
+    email: str

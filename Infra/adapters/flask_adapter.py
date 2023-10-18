@@ -15,6 +15,6 @@ class FlaskRequestAdapter(HttpContext):
         return self.response
     
 class FlaskMakeResponseAdapter:
-    def make_response(self, status:int = 400, body:dict={}):
+    def make_response(self, status:int = 400, body:dict={}, *args, **kwargs):
         return make_response(json.dumps(body, default=vars), status)
 

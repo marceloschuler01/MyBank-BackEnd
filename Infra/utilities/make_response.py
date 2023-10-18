@@ -11,7 +11,5 @@ def make_response(func):
         logging.info(response)
         logging.info("\n" * 3)
         adapter: FlaskMakeResponseAdapter = FlaskMakeResponseAdapter()
-        if isinstance(response, dict):
-            return adapter.make_response(**response)
-        return jsonify(response)
+        return adapter.make_response(**response)
     return wrapper

@@ -4,11 +4,13 @@ from Cliente.usecases.get_client_by_id import GetClientById
 from Infra.utilities.request_adapter_decorator import request_adapter
 from Infra.utilities.client_login_required import client_login_required
 from Infra.utilities.error_handler import error_handler 
+from Infra.utilities.make_response import make_response
 
 class ClienteResource(Resource):
 
     @client_login_required
     @error_handler
+    @make_response
     def get(self, request=None):
         cliente = GetClientById().get(id=session['id'])
         return {

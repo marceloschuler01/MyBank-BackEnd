@@ -16,7 +16,7 @@ class LoginMaker:
 
     def login(self):
         try: 
-            self.__try_login()
+            return self.__try_login()
         except NotFoundedDataException:
             return None
 
@@ -28,6 +28,6 @@ class LoginMaker:
         password = cliente.senha
         correct_password = (passed_password == password)
         if correct_password:
-            id = cliente.id
+            id = cliente.id_cliente
             return id
         return None
