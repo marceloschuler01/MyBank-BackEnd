@@ -1,8 +1,7 @@
 import logging
 from core.repository.repository_interface import RepositoryInterface as Repository
-from .get_client_password import GetClientPassword
-from Cliente.repository.cliente_repository import ClienteRepository
-from Cliente.usecases.get_client_by_cpf import GetClienteByCpf
+from cliente.repository.cliente_repository import ClienteRepository
+from cliente.usecases.get_client_by_cpf import GetClienteByCpf
 from Infra.utilities.with_db_connection import with_db_connection
 from core.exceptions.not_found_data_exception import NotFoundedDataException
 

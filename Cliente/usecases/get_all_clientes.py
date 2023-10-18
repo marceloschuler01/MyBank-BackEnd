@@ -1,5 +1,5 @@
 from core.repository.repository_interface import RepositoryInterface as Repository
-from Cliente.utilities.convert_clients_to_DTO import ConvertClientsToDTO
+from cliente.utilities.convert_clients_to_DTO import ConvertClientsToDTO
 
 class GetAllClientes:
     def __init__(self, cliente_repository: Repository) -> None:

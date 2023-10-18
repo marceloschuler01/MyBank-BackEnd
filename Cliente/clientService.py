@@ -15,11 +15,11 @@ cors = CORS(app)
 app.secret_key = '523a4792a759d43a53e2021ae86a0ccbb182bd9efde9fb2d22893252b0313207'
 
 
-from resource.clientResource import ClienteResource
-api.add_resource(ClienteResource, '/')
+from cliente.resource.clientResource import ClienteResource
+api.add_resource(ClienteResource, '/cliente')
 
-from Cliente.resource.register_resource import RegisterResource
-api.add_resource(RegisterResource, '/register')
+from cliente.resource.register_resource import RegisterResource
+api.add_resource(RegisterResource, '/cadastro')
 
 if __name__ == '__main__':
     logging.basicConfig(

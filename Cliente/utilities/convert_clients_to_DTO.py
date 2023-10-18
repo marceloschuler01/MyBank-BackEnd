@@ -1,4 +1,4 @@
-from Cliente.dto.cliente_DTO import ClienteDTO
+from cliente.dto.cliente_DTO import ClienteDTO
 from core.entity.cliente import Cliente
 from Infra.utilities.convert_to_dto import ConvertToDTO
 
