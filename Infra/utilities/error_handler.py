@@ -1,4 +1,5 @@
 from functools import wraps
+from Infra.exceptions.bad_request import BadRequest
 import traceback
 import logging
 import werkzeug
@@ -8,6 +9,9 @@ def error_handler(func):
     def wrapper(*args, **kwargs):
         try:
             return func(*args, **kwargs)
+        except BadRequest as e:
+            info = {'message': e.message, 'value': e.value, 'info': e.info}
+            return info, e.status
         except werkzeug.exceptions.UnsupportedMediaType:
             return "Content-Type must be application/json", 415
         except werkzeug.exceptions.BadRequest as e:

@@ -1,4 +1,4 @@
-from core.exceptions.invalid_data_exception import InvalidData
+from Infra.exceptions.invalid_data_exception import InvalidData
 
 class InvalidNameException(InvalidData):
     def __init__(self, msg="Nome Inválido"):

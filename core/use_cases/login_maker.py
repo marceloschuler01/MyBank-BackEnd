@@ -3,7 +3,7 @@ from core.repository.repository_interface import RepositoryInterface as Reposito
 from cliente.repository.cliente_repository import ClienteRepository
 from cliente.usecases.get_client_by_cpf import GetClienteByCpf
 from Infra.utilities.with_db_connection import with_db_connection
-from core.exceptions.not_found_data_exception import NotFoundedDataException
+from Infra.exceptions.not_found_data_exception import NotFoundedDataException
 
 class LoginMaker:
     def __init__(self, client_info: dict):

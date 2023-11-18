@@ -1,6 +1,6 @@
 from functools import wraps
 import logging
-from core.exceptions.not_found_data_exception import NotFoundedDataException
+from Infra.exceptions.not_found_data_exception import NotFoundedDataException
 
 def verify_if_it_was_found_data(func):
     @wraps(func)

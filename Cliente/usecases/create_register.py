@@ -1,13 +1,12 @@
 import logging
 from core.repository.repository_interface import RepositoryInterface as Repository
 from cliente.repository.cliente_repository import ClienteRepository
-from core.exceptions.invalid_data_exception import InvalidData
+from Infra.exceptions.invalid_data_exception import InvalidData
 from cliente.usecases.cpf_validator import CpfValidator
 from core.entity.cliente import Cliente
 from sqlalchemy.exc import IntegrityError
 from Infra.utilities.with_db_connection import with_db_connection
-from Infra.utilities.data_validator import DataValidator
-from core.models.cliente_model import COLUMNS
+from cliente.application.client_application import ClienteApplication
 
 class CreateRegister:
     def __init__(self, repository: ClienteRepository=ClienteRepository()):
@@ -18,13 +17,9 @@ class CreateRegister:
         self.log = logging.getLogger(__name__)
 
     def add(self, client_info) -> None:
+        client_application = ClienteApplication()
         try:
-            dv = DataValidator(COLUMNS)
-            valido = dv.validate(client_info)
-            if not valido == "Valido":
-                return {'status': 400, 'body': valido, 'value': None}
-            self._client = Cliente(**client_info)
-            result = self._try_add_client()
+            result = client_application.add_(client_info)
             return {'status':200, 'body':str(result), 'value':result.id_cliente}
         except InvalidData as e:
             self.log.warn(str(e))

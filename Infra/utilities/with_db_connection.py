@@ -1,4 +1,5 @@
 from Infra.config.connection import DBConnectionHandler
+import sys
 
 def with_db_connection(f):
     def with_connection_(*args, **kwargs):
@@ -15,6 +16,7 @@ def with_db_connection(f):
                 except:
                     db.session.rollback()
                     print("SQL failed")
+                    print("error", sys.exc_info()[0])
                     raise
                 else:
                     print("Commiting!")
