@@ -10,7 +10,7 @@ class ConvertToDTO:
         self._entry = entry
         if isinstance(self._entry, list):
             return self.__convert_list_of_objects()
-        return [self._convert_object(cliente=self._entry)]
+        return [self._convert_object(data=self._entry)]
     
     def __convert_list_of_objects(self):
         converted = []

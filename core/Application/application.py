@@ -6,20 +6,21 @@ from Infra.exceptions.bad_request import BadRequest
 from core.models.model_interface import ModelInterface
 
 class Application:
-    def __init__(self, model: ModelInterface, entity, repository:RepositoryInterface=None, id_client:int=None):
+    def __init__(self, model: ModelInterface, entity, repository:RepositoryInterface=None, id_cliente:int=None):
         self._repository = repository
         self._model = model
         self._entity = entity
-        self._id_client = id_client
+        self._id_cliente = id_cliente
 
     @with_db_connection
-    def get_by_id_(self, id:int=None, conn=None, *args, **kwargs):
+    def get_by_id_(self, id:int=None, filter:dict=dict(), conn=None, *args, **kwargs):
+        filter['id_cliente'] = self._id_cliente
         self._repository.select_by_id(id=id, conn=conn, *args, **kwargs)
 
     @with_db_connection
-    def get_(self, conn=None, filter:dict=dict()):
-        filter['id_client'] = self._id_client
-        self._repository.select(filter=filter, conn=conn)
+    def get_(self, filter:dict=dict(), conn=None, **kwargs):
+        filter['id_cliente'] = self._id_cliente
+        return self._repository.select(filter=filter, conn=conn, **kwargs)
 
     @with_db_connection
     def add_(self, data: dict, conn=None):

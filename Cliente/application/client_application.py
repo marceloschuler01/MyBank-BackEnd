@@ -9,5 +9,5 @@ class ClienteApplication(Application):
             model=ClienteModel, 
             entity=Cliente,
             repository=ClienteRepository(),
-            id_client=id_cliente
+            id_cliente=id_cliente
         )

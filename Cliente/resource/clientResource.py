@@ -12,7 +12,7 @@ class ClienteResource(Resource):
     @error_handler
     @make_response
     def get(self, request=None):
-        cliente = GetClientById().get(id=session['id'])
+        cliente = GetClientById(id_cliente=session['id']).get()
         return {
             'status': 200,
             'body': cliente,
