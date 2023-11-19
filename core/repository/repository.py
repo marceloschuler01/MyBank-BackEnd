@@ -16,16 +16,14 @@ class Repository(RepositoryInterface):
         return data
 
     @with_db_connection
-    @verify_if_it_was_found_data   
     def select(self, filter: dict={}, first=False, conn=None):
         if first:
             data = conn.session.query(self._model).filter_by(**filter).first()
         else:
-            data = conn.session.query(self._model).filter_by(**filter)
+            data = conn.session.query(self._model).filter_by(**filter).all()
         return data
 
     @with_db_connection
-    @verify_if_it_was_found_data
     def select_by_id(self, id: int, conn=None):
         data = conn.session.get(self._model, id)
         return data
