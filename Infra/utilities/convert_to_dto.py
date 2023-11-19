@@ -20,7 +20,6 @@ class ConvertToDTO:
         return converted
 
     def _convert_object(self, data):
-        #if isinstance(cliente, Cliente):
         fields = dataclasses.fields(self._dto)
         kwargs = {}
         for field in fields:
@@ -29,4 +28,3 @@ class ConvertToDTO:
             kwargs[key] = value
         dto = self._dto(**kwargs)
         return dto
-        #raise ValueError("To convert cliente to clienteDTO it must be passed a Cliente or a list of Cliente")

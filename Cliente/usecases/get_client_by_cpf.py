@@ -1,12 +1,11 @@
-from core.repository.repository_interface import RepositoryInterface as Repository
-from cliente.utilities.convert_clients_to_DTO import ConvertClientsToDTO
+from cliente.repository.cliente_repository import ClienteRepository
 from Infra.utilities.with_db_connection import with_db_connection
 
 class GetClienteByCpf:
-    def __init__(self, cliente_repository: Repository) -> None:
-        self.__repository = cliente_repository
+    def __init__(self, repository=ClienteRepository()) -> None:
+        self._repository = repository
 
     @with_db_connection
     def get(self, cpf, conn=None):
-        cliente = self.__repository.select(filter={'cpf':cpf}, conn=conn)
+        cliente = self._repository.select(filter={'cpf':cpf}, first=True, conn=conn)
         return cliente
