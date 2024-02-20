@@ -6,7 +6,7 @@ from conta.repository.conta_repository import ContaRepository
 class ContaApplication(Application):
     def __init__(self, id_cliente=None):
         super().__init__(
-            model=ContaRepository, 
+            model=ContaModel, 
             entity=Conta,
             repository=ContaRepository(),
             id_cliente=id_cliente

@@ -14,13 +14,15 @@ class Application:
 
     @with_db_connection
     def get_by_id_(self, id:int=None, filter:dict=dict(), conn=None, *args, **kwargs):
-        filter['id_cliente'] = self._id_cliente
+        if 'id_cliente' in self._model.columns:
+            filter['id_cliente'] = self._id_cliente
         self._repository.select_by_id(id=id, conn=conn, *args, **kwargs)
 
     @with_db_connection
-    def get_(self, filter:dict=dict(), conn=None, **kwargs):
-        filter['id_cliente'] = self._id_cliente
-        return self._repository.select(filter=filter, conn=conn, **kwargs)
+    def get_(self, filter:dict=dict(), conn=None, *args, **kwargs):
+        if 'id_cliente' in self._model.columns:
+            filter['id_cliente'] = self._id_cliente
+        return self._repository.select(filter=filter, conn=conn, *args, **kwargs)
 
     @with_db_connection
     def add_(self, data: dict, conn=None):

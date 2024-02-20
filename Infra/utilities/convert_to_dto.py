@@ -1,10 +1,11 @@
 import dataclasses
+from datetime import date, datetime
 
 class ConvertToDTO:
 
     def __init__(self, dto):
         self._dto = dto
-        self._entry: list or dto
+        self._entry: list | dto
 
     def convert(self, entry):
         self._entry = entry
@@ -25,6 +26,6 @@ class ConvertToDTO:
         for field in fields:
             key = field.name
             value = getattr(data, key)
-            kwargs[key] = value
+            kwargs[key] = value if type(value) in (int, str, float, datetime, date) else None
         dto = self._dto(**kwargs)
         return dto

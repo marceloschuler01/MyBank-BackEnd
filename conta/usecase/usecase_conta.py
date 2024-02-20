@@ -9,7 +9,7 @@ class UsecaseConta:
     
     @with_db_connection
     def get(self, conn=None):
-        
+
         application = ContaApplication(id_cliente=self._id_cliente)
         data = application.get_(conn=conn)
         result = ConvertToDTO(ContaDTO).convert(data)

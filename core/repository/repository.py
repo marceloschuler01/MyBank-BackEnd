@@ -3,6 +3,7 @@ from Infra.utilities.with_db_connection import with_db_connection
 from Infra.utilities.verify_if_it_was_found_data import verify_if_it_was_found_data
 from Infra.exceptions.duplicated_entry import DuplicatedEntry
 from sqlalchemy.exc import IntegrityError
+from sqlalchemy import or_
 
 class Repository(RepositoryInterface):
     def __init__(self, model, log):
@@ -16,7 +17,8 @@ class Repository(RepositoryInterface):
         return data
 
     @with_db_connection
-    def select(self, filter: dict={}, first=False, conn=None):
+    def select(self, filter: dict={}, or_: dict={}, first=False, conn=None):
+
         if first:
             data = conn.session.query(self._model).filter_by(**filter).first()
         else:
