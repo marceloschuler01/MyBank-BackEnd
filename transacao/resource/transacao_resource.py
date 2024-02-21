@@ -4,11 +4,18 @@ from Infra.utilities.client_login_required import client_login_required
 from Infra.utilities.make_response import make_response
 from Infra.utilities.error_handler import error_handler
 from transacao.usecase.usecase_transacao import UsecaseTransacao
+from transacao.usecase.usecase_new_transaction import UsecaseNewTransaction
 
 parser_post = reqparse.RequestParser()
 parser_post.add_argument(
-    'data',
-    type=dict,
+    'id_destiny_account',
+    type=int,
+    required=True,
+    help="Parameter Invalid",
+)
+parser_post.add_argument(
+    'value',
+    type=float,
     required=True,
     help="Parameter Invalid",
 )
@@ -28,15 +35,18 @@ class TransacaoResource(Resource):
             'body': result,
             }
 
-    '''@client_login_required
+    @client_login_required
     @error_handler
     @make_response
     def post(self):
         parse = parser_post.parse_args()
-        data = parse['data']
+        id_destiny_account = parse['id_destiny_account']
+        value = parse['value']
 
-        result = CreateRegister().add(data)
-        if result['status'] == 200:
-            session['id'] = result['value']
+        uc = UsecaseNewTransaction(id_cliente=session['id'])
+        result = uc.new_transaction(id_destiny_account=id_destiny_account, value=value)
 
-        return result'''
+        return {
+            'status': 200,
+            'body': result
+            }

@@ -17,7 +17,7 @@ class TransacaoModel:
         'valor': 
         {
             'required': True,
-            'type': str,
+            'type': float,
             'unique': False,
         },
         'data_transacao': {

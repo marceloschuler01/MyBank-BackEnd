@@ -8,4 +8,4 @@ class Agencia(Base):
     nome = Column(String, nullable=False, unique=True)
 
     def __repr__(self):
-        return f"Agencia (id={self.id}, , nome={self.nome})"
+        return f"Agencia (id={self.id}, nome={self.nome})"

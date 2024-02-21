@@ -15,7 +15,7 @@ class ContaModel:
         'id_agencia': 
         {
             'required': False,
-            'type': str,
+            'type': int,
             'unique': False,
         },
     }

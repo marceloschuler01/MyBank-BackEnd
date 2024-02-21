@@ -5,5 +5,4 @@ class ClienteDTO:
     cpf: str
     nome: str
     email: str
-    id_conta: int
 

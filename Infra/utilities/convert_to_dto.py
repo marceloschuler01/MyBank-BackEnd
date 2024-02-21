@@ -26,6 +26,11 @@ class ConvertToDTO:
         for field in fields:
             key = field.name
             value = getattr(data, key)
-            kwargs[key] = value if type(value) in (int, str, float, datetime, date) else None
+            if isinstance(value, datetime):
+                kwargs[key] = value.strftime("%Y-%m-%d %H:%M:%S")
+            elif type(value) in (int, str, float):
+                kwargs[key] = value
+            else:
+                kwargs[key] = None
         dto = self._dto(**kwargs)
         return dto

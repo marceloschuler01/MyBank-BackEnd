@@ -45,14 +45,10 @@ CREATE TABLE IF NOT EXISTS conta(
 
 CREATE TABLE IF NOT EXISTS transacao(
     id INT PRIMARY KEY AUTO_INCREMENT,
-    tipo INT (1, 2, 3) NOT NULL,
-    id_conta_origem INT,
-    id_conta_destino INT,
+    id_conta_origem INT NOT NULL,
+    id_conta_destino INT NOT NULL,
     valor FLOAT NOT NULL,
     data_transacao DATE,
     FOREIGN KEY (id_conta_origem) REFERENCES conta(id),
-    FOREIGN KEY (id_conta_destino) REFERENCES conta(id),
-    CONSTRAINT check_deposit_accounts CHECK ((tipo = 1 AND id_conta_destino IS NOT NULL AND id_conta_origem IS NULL) OR
-                                            (tipo = 2 AND id_conta_destino IS NULL AND id_conta_origem IS NOT NULL) OR
-                                            (tipo = 3 AND id_conta_destino IS NOT NULL AND id_conta_origem IS NOT NULL))
+    FOREIGN KEY (id_conta_destino) REFERENCES conta(id)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;

@@ -10,6 +10,7 @@ class DataValidator:
         self._validated_data = {}
 
     def validate(self, data: dict):
+
         for key, value in data.items():
             if not key in self._columns.keys():
                 self._not_found_keys.append(key)
