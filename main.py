@@ -16,13 +16,13 @@ app.secret_key = '523a4792a759d43a53e2021ae86a0ccbb182bd9efde9fb2d22893252b03132
 
 
 
-from cliente.resource.login_resource import LoginResource
+from customer.resource.login_resource import LoginResource
 api.add_resource(LoginResource, '/loginService')
 
-from cliente.resource.client_resource import ClienteResource
+from customer.resource.client_resource import ClienteResource
 api.add_resource(ClienteResource, '/cliente')
 
-from cliente.resource.register_resource import RegisterResource
+from customer.resource.register_resource import RegisterResource
 api.add_resource(RegisterResource, '/cadastro')
 
 from conta.resource.conta_resource import ContaResource
@@ -32,7 +32,7 @@ api.add_resource(
     '/conta/<int:_id>',
     )
 
-from transacao.resource.transacao_resource import TransacaoResource
+from transaction.resource.transacao_resource import TransacaoResource
 api.add_resource(
     TransacaoResource,
     '/transacao'

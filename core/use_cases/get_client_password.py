@@ -1,5 +1,5 @@
 from core.repository.repository_interface import RepositoryInterface as Repository
-from cliente.utilities.convert_clients_to_DTO import ConvertClientsToDTO
+from customer.utilities.convert_clients_to_DTO import ConvertClientsToDTO
 from Infra.utilities.with_db_connection import with_db_connection
 
 class GetClientPassword:

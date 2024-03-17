@@ -1,6 +1,6 @@
 import logging
-from cliente.application.client_application import ClienteApplication
-from cliente.usecases.get_client_by_cpf import GetClienteByCpf
+from customer.application.client_application import ClienteApplication
+from customer.usecases.get_client_by_cpf import GetClienteByCpf
 from Infra.utilities.with_db_connection import with_db_connection
 from Infra.exceptions.not_found_data_exception import NotFoundedDataException
 
