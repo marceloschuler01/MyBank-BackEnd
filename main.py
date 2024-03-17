@@ -25,7 +25,7 @@ api.add_resource(ClienteResource, '/cliente')
 from customer.resource.register_resource import RegisterResource
 api.add_resource(RegisterResource, '/cadastro')
 
-from conta.resource.conta_resource import ContaResource
+from account.resource.conta_resource import ContaResource
 api.add_resource(
     ContaResource, 
     '/conta',
