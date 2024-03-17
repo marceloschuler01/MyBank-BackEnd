@@ -3,7 +3,7 @@ from flask import session
 from Infra.utilities.client_login_required import client_login_required
 from Infra.utilities.error_handler import error_handler 
 from Infra.utilities.make_response import make_response
-from conta.usecase.usecase_conta import UsecaseConta
+from account.usecase.usecase_conta import UsecaseConta
 
 class ContaResource(Resource):
 
