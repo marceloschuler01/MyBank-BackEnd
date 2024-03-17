@@ -1,0 +1,9 @@
+Development of a back-end for a financial institution for study purposes. In this project, Python was used, as well as the Flask framework and the SQLAlchemy ORM for integration with the MySql database. The structuring was done following clean architecture principles.
+
+To execute the project in Python version 3.11.3:
+
+Install the requirements specified in requirements.txt.
+Configure the database in "Infra/config/connection", changing the "__connection_string" attribute to your database configuration.
+Execute the migrations present in "Infra/migrations".
+Run the "main.py" file.
+Use the available routes on port 5000.
