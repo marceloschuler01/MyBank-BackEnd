@@ -1,5 +1,5 @@
-from cliente.application.client_application import ClienteApplication
-from cliente.utilities.convert_clients_to_DTO import ConvertClientsToDTO
+from customer.application.client_application import ClienteApplication
+from customer.utilities.convert_clients_to_DTO import ConvertClientsToDTO
 from Infra.utilities.with_db_connection import with_db_connection
 
 class GetClientById:

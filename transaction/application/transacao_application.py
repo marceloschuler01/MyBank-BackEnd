@@ -1,7 +1,7 @@
 from core.application.application import Application
 from core.models.transacao_model import TransacaoModel
 from core.entity.transacao import Transacao
-from transacao.repository.transacao_repository import TransacaoRepository
+from transaction.repository.transacao_repository import TransacaoRepository
 
 class TransacaoApplication(Application):
     def __init__(self, id_cliente=None):

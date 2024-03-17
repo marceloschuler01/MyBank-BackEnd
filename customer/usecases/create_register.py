@@ -1,12 +1,12 @@
 import logging
 from core.repository.repository_interface import RepositoryInterface as Repository
-from cliente.repository.cliente_repository import ClienteRepository
+from customer.repository.cliente_repository import ClienteRepository
 from Infra.exceptions.invalid_data_exception import InvalidData
-from cliente.usecases.cpf_validator import CpfValidator
+from customer.usecases.cpf_validator import CpfValidator
 from core.entity.cliente import Cliente
 from sqlalchemy.exc import IntegrityError
 from Infra.utilities.with_db_connection import with_db_connection
-from cliente.application.client_application import ClienteApplication
+from customer.application.client_application import ClienteApplication
 
 class CreateRegister:
     def __init__(self, repository: ClienteRepository=ClienteRepository()):

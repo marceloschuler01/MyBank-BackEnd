@@ -1,4 +1,4 @@
-from cliente.repository.cliente_repository import ClienteRepository
+from customer.repository.cliente_repository import ClienteRepository
 from Infra.utilities.with_db_connection import with_db_connection
 
 class GetClienteByCpf:

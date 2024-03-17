@@ -1,10 +1,10 @@
-from transacao.application.transacao_application import TransacaoApplication
+from transaction.application.transacao_application import TransacaoApplication
 from conta.application.conta_application import ContaApplication
 from core.entity.conta import Conta
 from conta.repository.conta_repository import ContaRepository
 from Infra.utilities.with_db_connection import with_db_connection
 from Infra.utilities.convert_to_dto import ConvertToDTO
-from transacao.dto.transacao_dto import TransacaoDTO
+from transaction.dto.transacao_dto import TransacaoDTO
 from datetime import datetime
 
 class UsecaseNewTransaction:

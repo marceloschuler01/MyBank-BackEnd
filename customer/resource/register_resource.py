@@ -3,7 +3,7 @@ from flask import session, request
 from Infra.utilities.client_login_required import client_login_required
 from Infra.utilities.make_response import make_response
 from core.use_cases.login_maker import LoginMaker
-from cliente.usecases.create_register import CreateRegister
+from customer.usecases.create_register import CreateRegister
 from Infra.utilities.error_handler import error_handler
 import logging
 

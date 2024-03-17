@@ -3,8 +3,8 @@ from flask import session, request
 from Infra.utilities.client_login_required import client_login_required
 from Infra.utilities.make_response import make_response
 from Infra.utilities.error_handler import error_handler
-from transacao.usecase.usecase_transacao import UsecaseTransacao
-from transacao.usecase.usecase_new_transaction import UsecaseNewTransaction
+from transaction.usecase.usecase_transacao import UsecaseTransacao
+from transaction.usecase.usecase_new_transaction import UsecaseNewTransaction
 
 parser_post = reqparse.RequestParser()
 parser_post.add_argument(

@@ -1,6 +1,6 @@
 from flask_restful import Resource
 from flask import session
-from cliente.usecases.get_client_by_id import GetClientById
+from customer.usecases.get_client_by_id import GetClientById
 from Infra.utilities.client_login_required import client_login_required
 from Infra.utilities.error_handler import error_handler 
 from Infra.utilities.make_response import make_response
