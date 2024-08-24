@@ -1,5 +1,5 @@
 from transaction.application.transacao_application import TransacaoApplication
-from conta.application.conta_application import ContaApplication
+from account.application.conta_application import ContaApplication
 from Infra.utilities.with_db_connection import with_db_connection
 from Infra.utilities.convert_to_dto import ConvertToDTO
 from transaction.dto.transacao_dto import TransacaoDTO
